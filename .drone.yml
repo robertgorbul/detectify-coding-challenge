@@ -1,0 +1,103 @@
+kind: pipeline
+type: docker
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: restore-cache
+    image: meltwater/drone-cache
+    settings:
+      backend: filesystem
+      restore: true
+      cache_key: '{{ .Commit.Branch }}'
+      filesystem_cache_root: '/var/lib/cache'
+      mount:
+        - 'node_modules'
+    volumes:
+      - name: cache
+        path: '/var/lib/cache'
+    when:
+      branch:
+        - main
+        - feature/*
+
+  - name: build
+    image: node:14-buster-slim
+    pull: always
+    environment:
+      HUSKY_SKIP_INSTALL: 1
+    commands:
+      - yarn install
+      - yarn export
+
+  - name: rebuild-cache
+    image: meltwater/drone-cache
+    settings:
+      backend: filesystem
+      rebuild: true
+      cache_key: '{{ .Commit.Branch }}'
+      filesystem_cache_root: '/var/lib/cache'
+      mount:
+        - 'node_modules'
+    volumes:
+      - name: cache
+        path: '/var/lib/cache'
+    when:
+      branch:
+        - main
+        - feature/*
+      event:
+        - push
+
+  - name: publish-dev
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+      registry: hub.probablyweb.dev
+      repo: hub.probablyweb.dev/detectify
+      tags:
+        - latest
+      purge: true
+    when:
+      event:
+        - promote
+        - rollback
+      target:
+        - dev
+
+  - name: publish
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+      registry: hub.probablyweb.dev
+      repo: hub.probablyweb.dev/detectify
+      tags:
+        - stable
+      purge: true
+    when:
+      event:
+        - promote
+        - rollback
+      target:
+        - stable
+
+trigger:
+  event:
+    - push
+    - pull_request
+    - promote
+    - rollback
+
+volumes:
+  - name: cache
+    host:
+      path: '/var/lib/cache'

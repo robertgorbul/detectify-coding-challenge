@@ -1,0 +1,89 @@
+{
+  "private": true,
+  "name": "detectify-coding-challenge",
+  "description": "Detectify Coding Challenge",
+  "author": "Robert Gorbul <rgorbul@gmail.com> (https://probablyweb.dev)",
+  "version": "0.1.0",
+  "license": "MIT",
+  "keywords": [
+    "reactjs",
+    "nextjs",
+    "typescript",
+    "notes"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "start": "next build && next start",
+    "export": "next build && next export",
+    "build": "next build",
+    "build:analyze": "ANALYZE=true yarn build",
+    "lint:js": "eslint ./src/**/*.{js,jsx,ts,tsx}",
+    "lint:css": "stylelint './src/**/*.css'",
+    "prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,md,html,css}",
+    "postinstall": "husky install",
+    "compose:dev": "docker-compose up",
+    "compose:server": "docker-compose -f docker-compose.yml -f docker-compose.server.yml up",
+    "compose:ssg": "docker-compose -f docker-compose.yml -f docker-compose.ssg.yml up"
+  },
+  "dependencies": {
+    "framer-motion": "^3.10.0",
+    "next": "~10.0.7",
+    "react": "~17.0.1",
+    "react-dom": "~17.0.1"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^10.0.5",
+    "@testing-library/dom": "^7.30.0",
+    "@testing-library/react": "^11.2.5",
+    "@types/css-font-loading-module": "^0.0.4",
+    "@types/node": "^14.14.27",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "autoprefixer": "^10.2.1",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-babel-module": "^5.2.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-module-resolver": "^1.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^5.1.1",
+    "lint-staged": "^10.5.3",
+    "postcss": "~8.2.2",
+    "postcss-import": "^14.0.0",
+    "postcss-normalize": "^9.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
+    "stylelint": "~13.11.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-prettier": "^1.2.0",
+    "tailwindcss": "~2.0.2",
+    "typescript": "~4.2.2"
+  },
+  "engines": {
+    "node": ">=12.19.0",
+    "yarn": ">=1.22.0",
+    "npm": ">=6.14.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not ie <= 11",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertgorbul/detectify-coding-challenge"
+  },
+  "bugs": {
+    "url": "https://github.com/robertgorbul/detectify-coding-challenge/issues"
+  }
+}

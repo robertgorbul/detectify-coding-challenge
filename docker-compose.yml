@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  traefik:
+    image: traefik:2.4
+    ports:
+      - 80:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=web"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.notesapp.docker`, `www.traefik.notesapp.docker`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker/traefik/traefik.yml:/traefik.yml

@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+
+  app:
+    image: ${COMPOSE_PROJECT_NAME}:server
+    build:
+      context: ./
+      dockerfile: docker/app/server.Dockerfile
+      args:
+        - NODE_VER=${NODE_VER}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.entrypoints=web"
+      - "traefik.http.routers.app.rule=Host(`notesapp.docker`, `www.notesapp.docker`)"
+      - "traefik.http.services.app.loadbalancer.server.port=3000"

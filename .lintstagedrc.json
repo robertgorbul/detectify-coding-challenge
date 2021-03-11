@@ -1,0 +1,5 @@
+{
+  "*.css": "yarn lint:css --fix",
+  "*.{js,jsx,ts,tsx}": "yarn lint:js --cache --fix",
+  "*.{js,jsx,ts,tsx,css}": "yarn prettier"
+}

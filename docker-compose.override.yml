@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+
+  app:
+    image: ${COMPOSE_PROJECT_NAME}:dev
+    build:
+      context: ./
+      dockerfile: docker/app/dev.Dockerfile
+      args:
+        - NODE_VER=${NODE_VER}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.entrypoints=web"
+      - "traefik.http.routers.app.rule=Host(`dev.notesapp.docker`, `www.dev.notesapp.docker`)"
+      - "traefik.http.services.app.loadbalancer.server.port=3000"
+    environment:
+      PROJECT_UID: ${PROJECT_UID}
+      PROJECT_GID: ${PROJECT_GID}
+    volumes:
+      - ./:/home/node/app
+      - node_modules:/home/node/app/node_modules
+
+volumes:
+  node_modules:

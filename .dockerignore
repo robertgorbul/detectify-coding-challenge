@@ -1,0 +1,19 @@
+.git
+.idea
+.vscode
+.npm-packages
+*.log
+
+# Docker
+.dockerignore
+docker
+!**/docker-entrypoint*.sh
+!docker/nginx/*
+docker-compose*.yml
+
+# Project
+node_modules
+.env*
+report.html
+stats.json
+webpack.stats.json

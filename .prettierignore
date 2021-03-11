@@ -1,0 +1,12 @@
+.vscode
+.idea
+.git
+*.log
+
+package-lock.json
+yarn.lock
+
+# Project
+.next
+out
+node_modules

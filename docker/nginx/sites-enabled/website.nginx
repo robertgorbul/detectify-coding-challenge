@@ -1,0 +1,37 @@
+server {
+  listen 80;
+
+  server_name default_server;
+  root /usr/share/nginx/html;
+  index index.html;
+
+  location ~* \.(?:manifest|html?)$ {
+    expires -1;
+    add_header Cache-Control "no-cache";
+    access_log off;
+  }
+
+  location ~* \.(?:jpe?g|gif|png|ico|gz|svg|web[mp])$ {
+    expires 1y;
+    add_header Cache-Control "public,immutable";
+    access_log off;
+  }
+
+  location ~* \.(?:css|js|woff2?)$ {
+    expires 1y;
+    add_header Cache-Control "public,immutable";
+    access_log off;
+  }
+
+  location / {
+    index index.html;
+  }
+
+  location ~* \.git {
+    deny all;
+  }
+
+  location ~* \.(?:php|htaccess)$ {
+    deny all;
+  }
+}
