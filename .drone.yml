@@ -60,7 +60,7 @@ steps:
       password:
         from_secret: registry_password
       registry: hub.probablyweb.dev
-      repo: hub.probablyweb.dev/detectify
+      repo: hub.probablyweb.dev/notesapp
       tags:
         - latest
       purge: true
@@ -79,7 +79,7 @@ steps:
       password:
         from_secret: registry_password
       registry: hub.probablyweb.dev
-      repo: hub.probablyweb.dev/detectify
+      repo: hub.probablyweb.dev/notesapp
       tags:
         - stable
       purge: true
