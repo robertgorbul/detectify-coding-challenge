@@ -1,0 +1,18 @@
+@import 'sanitize.css';
+
+body,
+blockquote,
+dl,
+dd,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+  @apply font-mono text-base;
+}

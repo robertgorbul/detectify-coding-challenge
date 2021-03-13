@@ -1,0 +1,61 @@
+/*
+  Typography
+*/
+
+:root {
+  --text-root-size: theme('fontSize.root.base');
+  --baseline: theme('lineHeight.baseline.base');
+  --rhythm-unit: calc(1rem * var(--baseline));
+}
+
+@screen xxl {
+  :root {
+    --text-root-size: theme('fontSize.root.xxl');
+    --baseline: theme('lineHeight.baseline.xxl');
+  }
+}
+
+html {
+  font-size: var(--text-root-size);
+  line-height: var(--baseline);
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply font-sans font-normal not-italic antialiased;
+
+  font-size: 1em;
+  color: var(--text-body-color);
+  background-color: var(--bg-body-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.fonts-loaded {
+  @apply font-text;
+  @apply font-code;
+
+  & textarea,
+  & code {
+    @apply font-code;
+
+    font-weight: 500;
+  }
+
+  & code {
+    font-variant-ligatures: normal;
+  }
+}
+
+.fonts-loaded-base {
+  @apply font-text;
+}

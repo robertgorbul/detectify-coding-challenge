@@ -14,6 +14,7 @@ module.export = {
     '!./coverage/**',
     '!./config/*',
     '!./pages/**',
+    '!./src/assets/**',
     '!./src/pages/**',
     '!./src/theme/**',
   ],

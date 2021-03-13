@@ -28,6 +28,8 @@ module.exports = {
         blue: '#268bd2',
         cyan: '#2aa198',
         green: '#859900',
+        light: '#f0f0f0',
+        dark: '#333',
       },
       fontFamily: {
         text: ['"Inter Variable"', 'sans-serif'],
@@ -49,6 +51,12 @@ module.exports = {
         text: '35em',
         content: '60rem',
       },
+      minHeight: {
+        note: '50vh',
+      },
+      transitionProperty: {
+        colors: 'color, background-color',
+      },
       screens: {
         sm: '40em',
         md: '48em',
@@ -59,6 +67,10 @@ module.exports = {
       },
     },
   },
+  variants: {
+    transitionProperty: ['hover', 'focus'],
+  },
+  darkMode: 'media',
   corePlugins: {
     preflight: false,
   },

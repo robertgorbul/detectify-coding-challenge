@@ -1,0 +1,33 @@
+:root {
+  --color-base03: theme('colors.base03');
+  --color-base02: theme('colors.base02');
+  --color-base01: theme('colors.base01');
+  --color-base00: theme('colors.base00');
+  --color-base0: theme('colors.base0');
+  --color-base1: theme('colors.base1');
+  --color-base2: theme('colors.base2');
+  --color-base3: theme('colors.base3');
+  --color-yellow: theme('colors.yellow');
+  --color-orange: theme('colors.orange');
+  --color-red: theme('colors.red');
+  --color-magenta: theme('colors.magenta');
+  --color-violet: theme('colors.violet');
+  --color-blue: theme('colors.blue');
+  --color-cyan: theme('colors.cyan');
+  --color-green: theme('colors.green');
+  --bg-body-color: theme('colors.base3');
+  --text-body-color: theme('colors.dark');
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-body-color: theme('colors.base03');
+    --text-body-color: theme('colors.light');
+  }
+}
+
+body {
+  transition-property: theme('transitionProperty.colors');
+  transition-duration: theme('transitionDuration.150');
+  transition-timing-function: theme('transitionTimingFunction.in-out');
+}
