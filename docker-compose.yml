@@ -14,3 +14,4 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./docker/traefik/traefik.yml:/traefik.yml
+      - ./docker/traefik/logs:/var/log/traefik

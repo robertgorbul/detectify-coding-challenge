@@ -16,7 +16,8 @@ providers:
 log:
   level: INFO
 
-accessLog: {}
+accessLog:
+  filePath: "/var/log/traefik/access.log"
 
 api:
   dashboard: true
