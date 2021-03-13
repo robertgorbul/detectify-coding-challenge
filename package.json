@@ -31,6 +31,7 @@
     "compose:ssg": "docker-compose -f docker-compose.yml -f docker-compose.ssg.yml up"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "framer-motion": "^3.10.0",
     "next": "~10.0.7",
     "react": "~17.0.1",
@@ -43,6 +44,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/react-hooks": "^5.1.0",
     "@testing-library/user-event": "^12.8.3",
+    "@types/classnames": "^2.2.11",
     "@types/css-font-loading-module": "^0.0.4",
     "@types/node": "^14.14.27",
     "@types/react": "^17.0.0",
