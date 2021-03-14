@@ -35,7 +35,8 @@
     "framer-motion": "^3.10.0",
     "next": "~10.0.7",
     "react": "~17.0.1",
-    "react-dom": "~17.0.1"
+    "react-dom": "~17.0.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.5",
@@ -49,6 +50,7 @@
     "@types/node": "^14.14.27",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
     "autoprefixer": "^10.2.1",
