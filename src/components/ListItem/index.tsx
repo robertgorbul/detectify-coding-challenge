@@ -28,12 +28,17 @@ export const ListItem: React.FC<ListItemProps> = ({
   );
 
   return (
-    <motion.li className={classes} onClick={onClick} {...props}>
+    <motion.li
+      className={classes}
+      onClick={onClick}
+      {...props}
+    >
       <motion.div className="flex justify-between items-center">
         {children}
         {handleDelete && (
           <ActionButton
-            className="ml-auto"
+            className="ml-auto mr-0 bg-opacity-60 hover:bg-opacity-80"
+            color="bg-red"
             icon={IconPath.TRASH}
             onClick={handleDelete}
             aria-label="Delete note"

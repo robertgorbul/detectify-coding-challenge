@@ -14,7 +14,10 @@ export const List: React.FC<ListProps> = ({
     className
   );
   return (
-    <motion.ul className={classes} {...props}>
+    <motion.ul
+      className={classes}
+      {...props}
+    >
       {children}
     </motion.ul>
   );

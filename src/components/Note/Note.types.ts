@@ -1,5 +1,5 @@
 import { HTMLMotionProps } from 'framer-motion';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, SyntheticEvent } from 'react';
 
 export type NoteItem = {
   id: string;
@@ -10,6 +10,7 @@ export type NoteItem = {
 export type NoteProps = HTMLAttributes<HTMLDivElement> &
   HTMLMotionProps<'div'> & {
     item: NoteItem;
-    onClose: () => void;
+    handleClose: () => void;
     handleChange: (item: NoteItem) => void;
+    handleDelete: (e: SyntheticEvent<HTMLButtonElement>, id: string) => void;
   };

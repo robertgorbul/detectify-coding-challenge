@@ -51,8 +51,12 @@ module.exports = {
         text: '35em',
         content: '60rem',
       },
+      maxHeight: {
+        '1/2screen': '50vh',
+      },
       minHeight: {
         note: '50vh',
+        search: '35vh',
       },
       transitionProperty: {
         colors: 'color, background-color',

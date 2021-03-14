@@ -12,8 +12,9 @@ export const Note: React.FC<NoteProps> = ({
   item,
   className,
   children,
-  onClose,
+  handleClose,
   handleChange,
+  handleDelete,
   ...props
 }) => {
   const overlayRef = useRef(null);
@@ -42,7 +43,7 @@ export const Note: React.FC<NoteProps> = ({
   useEffect(() => {
     function onClickOutside(event: MouseEvent) {
       if (overlayRef?.current === event.target) {
-        onClose();
+        handleClose();
       }
     }
 
@@ -51,7 +52,7 @@ export const Note: React.FC<NoteProps> = ({
     return () => {
       document.removeEventListener('click', onClickOutside);
     };
-  }, [overlayRef.current, onClose]);
+  }, [overlayRef.current, handleClose]);
 
   return (
     <div
@@ -63,20 +64,30 @@ export const Note: React.FC<NoteProps> = ({
           className="ml-auto"
           icon={IconPath.X}
           tabIndex={TabIndexes.HIGH}
-          onClick={onClose}
+          onClick={handleClose}
           aria-label="Close note editor"
         />
         <div className="flex justify-center p-2">
           <textarea
             className="w-full max-w-text min-h-note resize-none border-0 text-current bg-transparent outline-none"
             id={item.id}
-            name="1_name"
+            name="note"
             value={item.content}
             placeholder={placeholder}
             autoFocus
             onChange={onChange}
             tabIndex={TabIndexes.HIGH}
             aria-label="Note editor"
+          />
+        </div>
+        <div className="flex items-center">
+          <ActionButton
+            className="ml-auto bg-opacity-60 hover:bg-opacity-80"
+            color="bg-red"
+            icon={IconPath.TRASH}
+            tabIndex={TabIndexes.HIGH}
+            onClick={(e) => handleDelete(e, item.id)}
+            aria-label="Close note editor"
           />
         </div>
       </motion.div>

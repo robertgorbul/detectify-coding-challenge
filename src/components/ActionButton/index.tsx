@@ -14,7 +14,10 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   ...props
 }) => {
   const classes = classNames(
-    'rounded-full text-current bg-opacity-40 hover:bg-opacity-60 border-0 p-1 m-1 shadow hover:shadow-md transition-colors',
+    'rounded-full text-current border-0 transition-colors',
+    'bg-opacity-40 hover:bg-opacity-60',
+    'p-1 m-2',
+    'shadow hover:shadow-md',
     'focus:outline-none focus:ring',
     { 'bg-magenta': !color },
     color,
