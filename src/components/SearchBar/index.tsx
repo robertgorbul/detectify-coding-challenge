@@ -24,7 +24,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   const overlayRef = useRef(null);
 
   const classes = classNames(
-    'w-full max-w-text min-h-search text-dark dark:text-light mt-20 overflow-hidden',
+    'w-full max-w-text min-h-search text-dark dark:text-light overflow-hidden',
+    'm-4 md:mt-20',
     'border-2 border-solid border-light dark:border-base1 rounded-2xl',
     'shadow-lg',
     'bg-light dark:bg-base1',

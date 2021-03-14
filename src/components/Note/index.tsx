@@ -20,7 +20,7 @@ export const Note: React.FC<NoteProps> = ({
   const overlayRef = useRef(null);
 
   const classes = classNames(
-    'w-full max-w-content text-dark dark:text-light',
+    'w-full max-w-content text-dark dark:text-light m-4',
     'border-2 border-solid border-base1 rounded-2xl',
     'shadow-lg',
     'bg-base2 dark:bg-base02',
@@ -57,7 +57,7 @@ export const Note: React.FC<NoteProps> = ({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 flex justify-center items-center"
+      className="fixed inset-0 flex justify-center items-start md:items-center"
     >
       <motion.div className={classes} {...props}>
         <ActionButton

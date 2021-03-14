@@ -28,11 +28,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   );
 
   return (
-    <motion.li
-      className={classes}
-      onClick={onClick}
-      {...props}
-    >
+    <motion.li className={classes} onClick={onClick} {...props}>
       <motion.div className="flex justify-between items-center">
         {children}
         {handleDelete && (
