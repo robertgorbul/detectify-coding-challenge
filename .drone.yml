@@ -24,6 +24,12 @@ steps:
         - main
         - feature/*
 
+  - name: test
+    image: node:14-buster-slim
+    pull: always
+    commands:
+      - yarn test:unit:coverage
+
   - name: build
     image: node:14-buster-slim
     pull: always

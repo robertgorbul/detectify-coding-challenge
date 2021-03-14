@@ -1,6 +1,7 @@
 const ignorePatterns = ['node_modules', '<rootDir>/.next/', '<rootDir>/out/'];
 
 module.export = {
+  roots: ['<rootDir>'],
   setupFilesAfterEnv: ['./config/jest.setup.ts'],
   testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
   coveragePathIgnorePatterns: ignorePatterns,
@@ -27,6 +28,10 @@ module.export = {
     },
   },
   moduleNameMapper: {
-    '~(.*)$': '<rootDir>/$1',
+    '^~/(.*)$': '<rootDir>$1',
+    '^~types(.*)$': '<rootDir>/src/types$1',
+    '^~theme(.*)$': '<rootDir>/src/theme$1',
+    '^~hooks(.*)$': '<rootDir>/src/hooks$1',
+    '^~components(.*)$': '<rootDir>/src/components$1',
   },
 };

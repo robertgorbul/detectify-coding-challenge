@@ -4,8 +4,9 @@
     [
       "module-resolver",
       {
+        "root": ["./"],
         "alias": {
-          "~/": "./",
+          "~": "./",
           "~types": "./src/types/index",
           "~theme": "./src/theme",
           "~hooks": "./src/hooks",

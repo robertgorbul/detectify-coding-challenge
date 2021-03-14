@@ -16,6 +16,7 @@ export const Icon: React.FC<IconProps> = ({
     width={width}
     height={height}
     stroke={color}
+    role="img"
     {...props}
   >
     <path
