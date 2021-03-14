@@ -1,8 +1,8 @@
 import { IconPath } from '~/src/assets/icons';
-import { SyntheticEvent } from 'react';
+import { ButtonHTMLAttributes } from 'react';
+import { HTMLMotionProps } from 'framer-motion';
 
-export type ButtonProps = {
-  className?: string;
-  icon?: IconPath;
-  onClick?: (e: SyntheticEvent<HTMLButtonElement>) => void;
-};
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  HTMLMotionProps<'button'> & {
+    icon?: IconPath;
+  };

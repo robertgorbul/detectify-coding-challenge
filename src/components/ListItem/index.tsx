@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import classNames from 'classnames/bind';
 
-import { ListItemProps } from './ListItem.types';
+import { ActionButton } from '~components/ActionButton';
+import { IconPath } from '~/src/assets/icons';
 
 import styles from './ListItem.module.css';
-import { Button } from '~components/Button';
-import { IconPath } from '~/src/assets/icons';
+
+import { ListItemProps } from './ListItem.types';
 
 const cx = classNames.bind(styles);
 
@@ -27,14 +28,15 @@ export const ListItem: React.FC<ListItemProps> = ({
   );
 
   return (
-    <motion.li className={classes} tabIndex={0} onClick={onClick} {...props}>
+    <motion.li className={classes} onClick={onClick} {...props}>
       <motion.div className="flex justify-between items-center">
         {children}
         {handleDelete && (
-          <Button
-            className="rounded-full text-current bg-magenta bg-opacity-40 border-0 p-1 m-1 ml-auto shadow"
+          <ActionButton
+            className="ml-auto"
             icon={IconPath.TRASH}
             onClick={handleDelete}
+            aria-label="Delete note"
           />
         )}
       </motion.div>

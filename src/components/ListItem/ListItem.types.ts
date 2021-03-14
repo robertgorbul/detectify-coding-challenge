@@ -1,8 +1,7 @@
 import { HTMLMotionProps } from 'framer-motion';
-import { SyntheticEvent } from 'react';
+import { LiHTMLAttributes, SyntheticEvent } from 'react';
 
-export type ListItemProps = HTMLMotionProps<'li'> & {
-  className?: string;
-  onClick?: (e: SyntheticEvent<HTMLLIElement>) => void;
-  handleDelete?: (e: SyntheticEvent<HTMLButtonElement>) => void;
-};
+export type ListItemProps = LiHTMLAttributes<HTMLLIElement> &
+  HTMLMotionProps<'li'> & {
+    handleDelete?: (e: SyntheticEvent<HTMLButtonElement>) => void;
+  };

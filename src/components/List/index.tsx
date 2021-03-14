@@ -3,11 +3,19 @@ import classNames from 'classnames';
 
 import { ListProps } from './List.types';
 
-export const List: React.FC<ListProps> = ({ className, children }) => {
+export const List: React.FC<ListProps> = ({
+  className,
+  children,
+  ...props
+}) => {
   const classes = classNames(
     'w-full flex flex-col justify-between items-stretch list-none',
     'm-0 p-4',
     className
   );
-  return <motion.ul className={classes}>{children}</motion.ul>;
+  return (
+    <motion.ul className={classes} {...props}>
+      {children}
+    </motion.ul>
+  );
 };
