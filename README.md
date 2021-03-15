@@ -1,4 +1,6 @@
 # Detectify Coding Challenge
+[![Build Status](https://builds.probablyweb.dev/api/badges/robertgorbul/detectify-coding-challenge/status.svg)](https://builds.probablyweb.dev/robertgorbul/detectify-coding-challenge)
+
 ## Notes App
 Build a web-based note-taking app
 
@@ -13,6 +15,14 @@ Build a web-based note-taking app
 - Move notes trough categories
 - Markdown editor
 - Persist notes in some way, either with a backend database, local storage or whatever
+
+
+### Result
+- Requirements are implemented
+- Categories support
+- localStorage support
+- Dark theme support via prefers-color-scheme
+- Demo https://notesapp.probablyweb.dev/
 
 ### Configuration
 Create `.env` file at project root:
