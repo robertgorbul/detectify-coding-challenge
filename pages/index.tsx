@@ -12,6 +12,7 @@ const IndexPage: React.FC = () => (
       />
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Notes App</title>
+      <meta name="description" content="Web-based note taking app" />
     </Head>
     <main className="flex justify-center items-start w-full min-h-screen">
       <NotesEditor />
