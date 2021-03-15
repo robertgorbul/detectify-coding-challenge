@@ -3,11 +3,14 @@ import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
 import { ActionButton } from '~components/ActionButton';
+import { CategoriesToolbar } from '~components/CategoriesToolbar';
 import { IconPath } from '~/src/assets/icons';
 
+import { updateCategories } from '~/src/utils';
 import { config } from '~config';
 import { TabIndexes } from '~types';
 import { NoteProps } from './Note.types';
+import { NoteCategory } from '~hooks/useNotes';
 
 export const Note: React.FC<NoteProps> = ({
   item,
@@ -29,6 +32,12 @@ export const Note: React.FC<NoteProps> = ({
   );
 
   const placeholder = 'Start typing...';
+
+  const handleCategories = (category: NoteCategory) =>
+    handleChange({
+      ...item,
+      categories: updateCategories({ categories: item?.categories, category }),
+    });
 
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const content = e.target.value;
@@ -82,7 +91,12 @@ export const Note: React.FC<NoteProps> = ({
             aria-label="Note editor"
           />
         </div>
-        <div className="flex items-center">
+        <div className="flex justify-between items-center">
+          <CategoriesToolbar
+            className="mr-auto"
+            activeCategories={item?.categories}
+            handleChange={handleCategories}
+          />
           <ActionButton
             className="ml-auto bg-opacity-60 hover:bg-opacity-80"
             color="bg-red"

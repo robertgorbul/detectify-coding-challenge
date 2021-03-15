@@ -6,9 +6,7 @@ import { IconPath } from '~/src/assets/icons';
 
 describe('Icon', () => {
   it('Should have svg', () => {
-    const { getByRole } = render(
-      <Icon icon={IconPath.SEARCH} />
-    );
+    const { getByRole } = render(<Icon icon={IconPath.SEARCH} />);
 
     expect(getByRole('img')).toBeTruthy();
   });

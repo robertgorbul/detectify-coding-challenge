@@ -70,7 +70,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         className={classes}
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0 }}
         {...props}
       >
         <div className="flex justify-between items-center">
