@@ -34,13 +34,15 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      if (!e.target.value) return setFilteredItems([]);
+      if (!e?.target?.value) return setFilteredItems([]);
 
       return setFilteredItems(
         items.filter(
           (item) =>
-            item.content.toLowerCase().includes(e.target.value.toLowerCase()) ||
-            item.title.toLowerCase().includes(e.target.value.toLowerCase())
+            item?.content
+              .toLowerCase()
+              .includes(e.target.value.toLowerCase()) ||
+            item?.title.toLowerCase().includes(e.target.value.toLowerCase())
         )
       );
     },
@@ -70,6 +72,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         className={classes}
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0 }}
         {...props}
       >
         <div className="flex justify-between items-center">
