@@ -18,6 +18,7 @@
     "noImplicitAny": true,
     "paths": {
       "~/*": ["./*"],
+      "~config": ["./src/config/index"],
       "~types": ["./src/types/index"],
       "~theme/*": ["./src/theme/*"],
       "~hooks/*": ["./src/hooks/*"],

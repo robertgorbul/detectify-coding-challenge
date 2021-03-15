@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { ActionButton } from '~components/ActionButton';
 import { IconPath } from '~/src/assets/icons';
 
+import { config } from '~config';
 import { TabIndexes } from '~types';
 import { NoteProps } from './Note.types';
 
@@ -67,12 +68,13 @@ export const Note: React.FC<NoteProps> = ({
           onClick={handleClose}
           aria-label="Close note editor"
         />
-        <div className="flex justify-center p-2">
+        <div className="flex flex-col items-center p-2">
           <textarea
             className="w-full max-w-text min-h-note resize-none border-0 text-current bg-transparent outline-none"
             id={item.id}
             name="note"
             value={item.content}
+            maxLength={config.notes.maxNoteChars}
             placeholder={placeholder}
             autoFocus
             onChange={onChange}

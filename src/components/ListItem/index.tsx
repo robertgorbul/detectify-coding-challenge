@@ -18,7 +18,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   ...props
 }) => {
   const classes = cx(
-    'flex-auto transition-colors cursor-pointer shadow-sm',
+    'max-w-full flex-auto transition-colors cursor-pointer shadow-sm',
     'm-0 mt-4 px-4 py-2',
     'bg-base2 dark:bg-base02',
     'border-2 border-solid border-base1 rounded-2xl',
