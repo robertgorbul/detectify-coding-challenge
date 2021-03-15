@@ -9,8 +9,8 @@ import { ListItem } from '~components/ListItem';
 import { IconPath } from '~/src/assets/icons';
 
 import { NoteItem } from '~hooks/useNotes';
-import { SearchBarProps } from './SearchBar.types';
 import { TabIndexes } from '~types';
+import { SearchBarProps } from './SearchBar.types';
 
 export const SearchBar: React.FC<SearchBarProps> = ({
   className,
@@ -95,7 +95,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           />
         </div>
         <div className="max-h-1/2screen overflow-y-auto">
-          <List transition={{ staggerChildren: 0.07, delayChildren: 0.2 }}>
+          <List
+            className="p-4"
+            transition={{ staggerChildren: 0.07, delayChildren: 0.2 }}
+          >
             {filteredItems.map((item) => (
               <ListItem
                 key={item.id}

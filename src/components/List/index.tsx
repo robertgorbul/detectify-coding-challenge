@@ -10,7 +10,7 @@ export const List: React.FC<ListProps> = ({
 }) => {
   const classes = classNames(
     'w-full flex flex-col justify-between items-stretch list-none',
-    'm-0 p-4',
+    'm-0 p-0',
     className
   );
   return (

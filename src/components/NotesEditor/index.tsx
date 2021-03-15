@@ -8,11 +8,10 @@ import { ListItem } from '~components/ListItem';
 import { Note } from '~components/Note';
 import { SearchBar } from '~components/SearchBar';
 
-import { useNotes } from '~hooks/useNotes';
+import { useNotes, NoteItem } from '~hooks/useNotes';
 import { IconPath } from '~/src/assets/icons';
 
 import { TabIndexes } from '~types';
-import { NoteItem } from '~hooks/useNotes';
 
 export const NotesEditor: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<NoteItem>();
@@ -86,7 +85,7 @@ export const NotesEditor: React.FC = () => {
           />
         </div>
         {items.length ? (
-          <List>
+          <List className="p-4">
             {items.map((item: NoteItem) => (
               <ListItem
                 key={item.id}

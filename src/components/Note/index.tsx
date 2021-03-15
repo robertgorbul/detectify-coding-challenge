@@ -1,4 +1,4 @@
-import { useRef, useEffect, ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
