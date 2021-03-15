@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { HTMLMotionProps } from 'framer-motion';
 
-import { NoteItem } from '~components/Note/Note.types';
+import { NoteItem } from "~hooks/useNotes";
 
 export type SearchBarProps = HTMLAttributes<HTMLDivElement> &
   HTMLMotionProps<'div'> & {

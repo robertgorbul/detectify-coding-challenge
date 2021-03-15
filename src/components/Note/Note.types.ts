@@ -1,11 +1,7 @@
 import { HTMLMotionProps } from 'framer-motion';
 import { HTMLAttributes, SyntheticEvent } from 'react';
 
-export type NoteItem = {
-  id: string;
-  title: string;
-  content: string;
-};
+import { NoteItem } from '~hooks/useNotes';
 
 export type NoteProps = HTMLAttributes<HTMLDivElement> &
   HTMLMotionProps<'div'> & {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, SyntheticEvent } from 'react';
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 import { ActionButton } from '~components/ActionButton';
@@ -8,15 +8,15 @@ import { ListItem } from '~components/ListItem';
 import { Note } from '~components/Note';
 import { SearchBar } from '~components/SearchBar';
 
-import { notes } from '~/src/assets/data';
+import { useNotes } from '~hooks/useNotes';
 import { IconPath } from '~/src/assets/icons';
 
 import { TabIndexes } from '~types';
-import { NoteItem } from '~components/Note/Note.types';
+import { NoteItem } from '~hooks/useNotes';
 
 export const NotesEditor: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<NoteItem>();
-  const [items, setItems] = useState<NoteItem[]>(notes);
+  const [items, setItems] = useNotes();
   const [isNewItemCreated, setIsNewItemCreated] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
@@ -85,19 +85,32 @@ export const NotesEditor: React.FC = () => {
             aria-label="Create new note"
           />
         </div>
-        <List>
-          {items.map((item: NoteItem) => (
-            <ListItem
-              key={item.id}
-              onClick={() => setSelectedItem(item)}
-              handleDelete={(e) => handleDelete(e, item.id)}
-              layoutId={`note_${item.id}`}
-              tabIndex={TabIndexes.HIGH}
-            >
-              {item.title}
-            </ListItem>
-          ))}
-        </List>
+        {items.length ? (
+          <List>
+            {items.map((item: NoteItem) => (
+              <ListItem
+                key={item.id}
+                onClick={() => setSelectedItem(item)}
+                handleDelete={(e) => handleDelete(e, item.id)}
+                layoutId={`note_${item.id}`}
+                tabIndex={TabIndexes.HIGH}
+              >
+                {item.title}
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+          <motion.div
+            className="w-full flex px-4 py-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            Hi there! There are notes yet to be created.
+            <br />
+            Start by pressing "+".
+          </motion.div>
+        )}
         <AnimatePresence>
           {selectedItem?.id && (
             <Note

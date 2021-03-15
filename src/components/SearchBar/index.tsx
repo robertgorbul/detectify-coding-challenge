@@ -8,7 +8,7 @@ import { List } from '~components/List';
 import { ListItem } from '~components/ListItem';
 import { IconPath } from '~/src/assets/icons';
 
-import { NoteItem } from '~components/Note/Note.types';
+import { NoteItem } from '~hooks/useNotes';
 import { SearchBarProps } from './SearchBar.types';
 import { TabIndexes } from '~types';
 
@@ -68,8 +68,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     >
       <motion.div
         className={classes}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, scale: 0.75 }}
+        animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0 }}
         {...props}
       >
