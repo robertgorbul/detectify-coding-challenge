@@ -19,11 +19,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   handleSelect,
   ...props
 }) => {
+  const [keyword, setKeyword] = useState<string>('');
   const [filteredItems, setFilteredItems] = useState<NoteItem[]>([]);
 
   const overlayRef = useRef(null);
 
   const classes = classNames(
+    'flex flex-col items-stretch justify-stretch',
     'w-full max-w-text min-h-search text-dark dark:text-light overflow-hidden',
     'm-4 md:mt-20',
     'border-2 border-solid border-light dark:border-base1 rounded-2xl',
@@ -34,8 +36,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      if (!e?.target?.value) return setFilteredItems([]);
+      if (!e?.target?.value) {
+        setKeyword('');
+        return setFilteredItems([]);
+      }
 
+      setKeyword(e.target.value);
       return setFilteredItems(
         items.filter(
           (item) =>
@@ -75,7 +81,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         exit={{ opacity: 0 }}
         {...props}
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-none">
           <label
             className="flex-auto flex items-center m-2 mr-0"
             htmlFor="searchBar"
@@ -97,25 +103,37 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             aria-label="Close note editor"
           />
         </div>
-        <div className="max-h-1/2screen overflow-y-auto">
-          <List
-            className="p-4"
-            transition={{ staggerChildren: 0.07, delayChildren: 0.2 }}
-          >
-            {filteredItems.map((item) => (
-              <ListItem
-                key={item.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => handleSelect(item)}
-                layoutId={`search_item_${item.id}`}
-                tabIndex={TabIndexes.HIGH}
-              >
-                {item.title}
-              </ListItem>
-            ))}
-          </List>
+        <div className="flex items-start max-h-1/2screen overflow-y-auto flex-auto">
+          {!!filteredItems?.length && (
+            <List
+              className="p-4 flex-none"
+              transition={{ staggerChildren: 0.07, delayChildren: 0.2 }}
+            >
+              {filteredItems.map((item) => (
+                <ListItem
+                  key={item.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => handleSelect(item)}
+                  layoutId={`search_item_${item.id}`}
+                  tabIndex={TabIndexes.HIGH}
+                >
+                  {item.title}
+                </ListItem>
+              ))}
+            </List>
+          )}
+          {!!keyword && !filteredItems?.length && (
+            <div className="flex justify-center items-center m-auto">
+              No results available :(
+            </div>
+          )}
+          {!keyword && !filteredItems?.length && (
+            <div className="flex justify-center items-center m-auto">
+              Please enter something :)
+            </div>
+          )}
         </div>
       </motion.div>
     </div>

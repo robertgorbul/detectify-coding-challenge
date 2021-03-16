@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
 import { CategoryToggle } from '~components/CategoryToggle';
@@ -10,6 +11,7 @@ export const CategoriesToolbar: React.FC<CategoriesToolbarProps> = ({
   className,
   activeCategories = [],
   handleChange,
+  ...props
 }) => {
   const classes = classNames(
     'flex justify-start items-center text-light',
@@ -18,7 +20,7 @@ export const CategoriesToolbar: React.FC<CategoriesToolbarProps> = ({
   const categories = Object.values(NoteCategory);
 
   return (
-    <div className={classes}>
+    <motion.div className={classes} {...props}>
       {categories.map((category) => (
         <CategoryToggle
           key={category}
@@ -29,6 +31,6 @@ export const CategoriesToolbar: React.FC<CategoriesToolbarProps> = ({
           handleClick={() => handleChange(category)}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };

@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 
 import { List } from '~components/List';
@@ -19,41 +18,26 @@ export const NotesList: React.FC<NotesListProps> = ({
   const classes = classNames(className);
 
   return (
-    <AnimatePresence>
-      {items?.length ? (
-        <List
-          className={classes}
-          initial="initial"
-          animate="animate"
-          exit="initial"
-          variants={config.animation}
-          {...props}
+    <List
+      className={classes}
+      initial="initial"
+      animate="animate"
+      exit="initial"
+      variants={config.animation}
+      {...props}
+    >
+      {items.map((item: NoteItem) => (
+        <ListItem
+          key={item.id}
+          className="font-medium"
+          onClick={() => handleSelect(item)}
+          handleDelete={(e) => handleDelete(e, item.id)}
+          layoutId={`note_${item.id}`}
+          tabIndex={TabIndexes.HIGH}
         >
-          {items.map((item: NoteItem) => (
-            <ListItem
-              key={item.id}
-              className="font-medium"
-              onClick={() => handleSelect(item)}
-              handleDelete={(e) => handleDelete(e, item.id)}
-              layoutId={`note_${item.id}`}
-              tabIndex={TabIndexes.HIGH}
-            >
-              {item.title}
-            </ListItem>
-          ))}
-        </List>
-      ) : (
-        <motion.div
-          className="w-full flex font-medium"
-          initial="initial"
-          animate="animate"
-          variants={config.animation}
-        >
-          Hi there! There are notes yet to be created.
-          <br />
-          Start by pressing + button.
-        </motion.div>
-      )}
-    </AnimatePresence>
+          {item.title}
+        </ListItem>
+      ))}
+    </List>
   );
 };

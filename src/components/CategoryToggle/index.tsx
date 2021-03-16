@@ -12,6 +12,7 @@ export const CategoryToggle: React.FC<CategoryToggleProps> = ({
   category,
   isActive,
   handleClick,
+  ...props
 }) => {
   const categoryClasses = classNames(
     {
@@ -29,6 +30,7 @@ export const CategoryToggle: React.FC<CategoryToggleProps> = ({
       tabIndex={TabIndexes.HIGH}
       onClick={handleClick}
       aria-label={`Toggle ${category} category`}
+      {...props}
     />
   );
 };

@@ -8,5 +8,9 @@ export type NoteProps = HTMLAttributes<HTMLDivElement> &
     item: NoteItem;
     handleClose: () => void;
     handleChange: (item: NoteItem) => void;
-    handleDelete: (e: SyntheticEvent<HTMLButtonElement>, id: string) => void;
+    handleDelete: (
+      e: SyntheticEvent<HTMLButtonElement>,
+      id: string,
+      permanent?: boolean
+    ) => void;
   };
