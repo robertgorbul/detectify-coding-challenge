@@ -27,6 +27,7 @@ module.export = {
       lines: 80,
     },
   },
+  preset: 'ts-jest',
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>$1',
     '^~config(.*)$': '<rootDir>/src/config$1',

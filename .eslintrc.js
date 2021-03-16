@@ -16,6 +16,7 @@ module.exports = {
     es2021: true,
     browser: true,
     node: true,
+    jest: true,
   },
   settings: {
     'import/parsers': {

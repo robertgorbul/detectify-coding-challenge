@@ -4,6 +4,8 @@ import { render, fireEvent } from '@testing-library/react';
 import { ActionButton } from '../index';
 import { IconPath } from '~/src/assets/icons';
 
+jest.mock('../ActionButton.module.css', () => ({}));
+
 describe('ActionButton', () => {
   it('Should be clicked once', async () => {
     const onClick = jest.fn();
