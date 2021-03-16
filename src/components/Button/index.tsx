@@ -13,10 +13,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   ...props
 }) => {
-  const classes = classNames(
-    'flex justify-stretch items-center cursor-pointer',
-    className
-  );
+  const classes = classNames('cursor-pointer', className);
 
   return (
     <motion.button className={classes} onClick={onClick} {...props}>

@@ -51,6 +51,7 @@ module.exports = {
     'react/jsx-uses-react': 0,
     'react/react-in-jsx-scope': 0,
     'react/jsx-props-no-spreading': 0,
+    'jsx-a11y/no-autofocus': 1,
     '@typescript-eslint/quotes': [2, 'single', { allowTemplateLiterals: true }],
   },
   overrides: [

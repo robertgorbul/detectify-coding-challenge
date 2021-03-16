@@ -1,0 +1,5 @@
+.actionButton {
+  & > svg {
+    @apply m-2;
+  }
+}

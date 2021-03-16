@@ -21,6 +21,7 @@ export const CategoriesToolbar: React.FC<CategoriesToolbarProps> = ({
     <div className={classes}>
       {categories.map((category) => (
         <CategoryToggle
+          key={category}
           isActive={activeCategories.includes(category)}
           color={config.notes.categories[category].color}
           icon={config.notes.categories[category].icon}

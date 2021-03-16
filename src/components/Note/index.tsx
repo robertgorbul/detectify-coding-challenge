@@ -62,7 +62,7 @@ export const Note: React.FC<NoteProps> = ({
     return () => {
       document.removeEventListener('click', onClickOutside);
     };
-  }, [overlayRef.current, handleClose]);
+  }, [overlayRef, handleClose]);
 
   return (
     <div

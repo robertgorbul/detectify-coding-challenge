@@ -2,7 +2,7 @@ module.exports = {
   plugins: [
     'postcss-normalize',
     'postcss-import',
-    'tailwindcss',
+    '@tailwindcss/jit',
     [
       'postcss-preset-env',
       {

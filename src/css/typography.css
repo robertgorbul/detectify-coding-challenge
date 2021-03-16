@@ -42,7 +42,6 @@ h6 {
 
 .fonts-loaded {
   @apply font-text;
-  @apply font-code;
 
   & textarea,
   & code {
@@ -54,8 +53,4 @@ h6 {
   & code {
     font-variant-ligatures: normal;
   }
-}
-
-.fonts-loaded-base {
-  @apply font-text;
 }

@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.5",
+    "@tailwindcss/jit": "^0.1.1",
     "@testing-library/dom": "^7.30.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",

@@ -1,5 +1,5 @@
-import { NoteCategory } from '~hooks/useNotes';
 import { HTMLAttributes } from 'react';
+import { NoteCategory } from '~hooks/useNotes';
 
 export type CategoriesToolbarProps = HTMLAttributes<HTMLDivElement> & {
   activeCategories?: NoteCategory[];

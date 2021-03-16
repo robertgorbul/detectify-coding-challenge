@@ -61,7 +61,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     return () => {
       document.removeEventListener('click', onClickOutside);
     };
-  }, [overlayRef.current, handleClose]);
+  }, [overlayRef, handleClose]);
 
   return (
     <div
@@ -76,10 +76,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         {...props}
       >
         <div className="flex justify-between items-center">
-          <div className="flex-auto flex items-center">
-            <label className="p-1 m-1" htmlFor="searchBar">
-              <Icon className="my-auto" icon={IconPath.SEARCH} />
-            </label>
+          <label
+            className="flex-auto flex items-center m-2 mr-0"
+            htmlFor="searchBar"
+          >
+            <Icon className="my-auto" icon={IconPath.SEARCH} />
             <input
               id="searchBar"
               className="flex-auto text-xl mx-2 border-0 border-b-4 border-violet bg-transparent focus:outline-black"
@@ -88,7 +89,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
               autoFocus
               onChange={onChange}
             />
-          </div>
+          </label>
           <ActionButton
             icon={IconPath.X}
             tabIndex={TabIndexes.HIGH}

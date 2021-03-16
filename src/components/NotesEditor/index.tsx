@@ -1,15 +1,13 @@
 import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 import { ActionButton } from '~components/ActionButton';
-import { List } from '~components/List';
-import { ListItem } from '~components/ListItem';
 import { Note } from '~components/Note';
+import { NotesList } from '~components/NotesList';
 import { SearchBar } from '~components/SearchBar';
 
 import { NoteItem, useNotes } from '~hooks/useNotes';
-import { config } from '~config';
 import { IconPath } from '~/src/assets/icons';
 
 import { TabIndexes } from '~types';
@@ -25,6 +23,7 @@ export const NotesEditor: React.FC = () => {
       id: uuidv4(),
       title: 'Start typing...',
       content: '',
+      categories: [],
     };
     setItems([item, ...items]);
     setIsNewItemCreated(true);
@@ -85,37 +84,13 @@ export const NotesEditor: React.FC = () => {
             aria-label="Create new note"
           />
         </div>
-        {!!items?.length ? (
-          <List
-            className="p-4"
-            initial="initial"
-            animate="animate"
-            variants={config.animation}
-          >
-            {items.map((item: NoteItem) => (
-              <ListItem
-                key={item.id}
-                onClick={() => setSelectedItem(item)}
-                handleDelete={(e) => handleDelete(e, item.id)}
-                layoutId={`note_${item.id}`}
-                tabIndex={TabIndexes.HIGH}
-              >
-                {item.title}
-              </ListItem>
-            ))}
-          </List>
-        ) : (
-          <motion.div
-            className="w-full flex px-4 py-8"
-            initial="initial"
-            animate="animate"
-            variants={config.animation}
-          >
-            Hi there! There are notes yet to be created.
-            <br />
-            Start by pressing "+".
-          </motion.div>
-        )}
+        <div className="px-4 py-8">
+          <NotesList
+            items={items}
+            handleSelect={(item) => setSelectedItem(item)}
+            handleDelete={(e, id) => handleDelete(e, id)}
+          />
+        </div>
         <AnimatePresence>
           {selectedItem?.id && (
             <Note
