@@ -22,9 +22,9 @@ import { TabIndexes } from '~types';
 export const NotesEditor: React.FC = () => {
   const [items, setItems] = useNotes();
   const [selectedItem, setSelectedItem] = useState<NoteItem>();
+  const [activeItemId, setActiveItemId] = useState<string>('');
   const [itemsToDelete, setItemsToDelete] = useState<string[]>([]);
   const [activeCategories, setActiveCategories] = useState<NoteCategory[]>([]);
-  const [isNewItemCreated, setIsNewItemCreated] = useState<boolean>(false);
   const [isItemsToDelete, setIsItemsToDelete] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
@@ -38,7 +38,7 @@ export const NotesEditor: React.FC = () => {
 
     setActiveCategories([]);
     setItems([item, ...items]);
-    setIsNewItemCreated(true);
+    setActiveItemId(item?.id);
   }, [items]);
 
   const handleChange = useCallback(
@@ -53,7 +53,7 @@ export const NotesEditor: React.FC = () => {
 
   const handleSelect = (item: NoteItem) => {
     setActiveCategories([]);
-    setSelectedItem(item);
+    setActiveItemId(item?.id);
   };
 
   const handleDelete = (
@@ -63,6 +63,7 @@ export const NotesEditor: React.FC = () => {
   ) => {
     e.stopPropagation();
     setSelectedItem(undefined);
+    setActiveItemId('');
     setItemsToDelete((prevState) => [...prevState, id]);
     if (permanent) setIsItemsToDelete(true);
   };
@@ -70,7 +71,7 @@ export const NotesEditor: React.FC = () => {
   const onSelectedFromSearch = (item: NoteItem) => {
     setIsSearchOpen(false);
     setActiveCategories([]);
-    setSelectedItem(item);
+    setActiveItemId(item?.id);
   };
 
   const activeItems = useMemo<NoteItem[]>(() => {
@@ -87,11 +88,12 @@ export const NotesEditor: React.FC = () => {
   }, [items]);
 
   useEffect(() => {
-    if (isNewItemCreated) {
-      setSelectedItem(items[0]);
-      setIsNewItemCreated(false);
+    if (activeItemId) {
+      setSelectedItem(items.find(({ id }) => id === activeItemId));
+    } else {
+      setSelectedItem(undefined);
     }
-  }, [isNewItemCreated]);
+  }, [activeItemId]);
 
   useEffect(() => {
     if (isItemsToDelete) {
@@ -165,7 +167,7 @@ export const NotesEditor: React.FC = () => {
             <Note
               layoutId={`note_${selectedItem.id}`}
               item={selectedItem}
-              handleClose={() => setSelectedItem(undefined)}
+              handleClose={() => setActiveItemId('')}
               handleChange={handleChange}
               handleDelete={handleDelete}
             />
