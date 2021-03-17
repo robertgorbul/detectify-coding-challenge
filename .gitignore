@@ -37,4 +37,5 @@ yarn-error.log*
 *.code-workspace
 .eslintcache
 .husky
+!.husky/post-commit
 !.husky/pre-commit
