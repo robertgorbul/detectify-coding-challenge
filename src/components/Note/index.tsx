@@ -85,7 +85,6 @@ export const Note: React.FC<NoteProps> = ({
             value={item.content}
             maxLength={config.notes.maxNoteChars}
             placeholder={placeholder}
-            autoFocus
             onChange={onChange}
             tabIndex={TabIndexes.HIGH}
             aria-label="Note editor"

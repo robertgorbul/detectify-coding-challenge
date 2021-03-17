@@ -34,6 +34,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     className
   );
 
+  const variants = {
+    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: 0, scale: 0.75 },
+    exit: { opacity: 0 },
+  };
+
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       if (!e?.target?.value) {
@@ -76,9 +82,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     >
       <motion.div
         className={classes}
-        initial={{ opacity: 0, scale: 0.75 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0 }}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={variants}
         {...props}
       >
         <div className="flex justify-between items-center flex-none">
@@ -92,7 +99,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
               className="flex-auto text-xl mx-2 border-0 border-b-4 border-violet bg-transparent focus:outline-black"
               type="text"
               name="search"
-              autoFocus
               onChange={onChange}
             />
           </label>

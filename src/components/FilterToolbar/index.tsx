@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
 
 import { ActionButton } from '~components/ActionButton';
@@ -18,6 +18,23 @@ export const FilterToolbar: React.FC<FilterToolbarProps> = ({
 }) => {
   const classes = classNames('flex justify-start items-center', className);
 
+  const variants = {
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        x: { stiffness: 1000, velocity: -100 },
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: 20,
+      transition: {
+        x: { stiffness: 1000 },
+      },
+    },
+  };
+
   return (
     <motion.div className={classes} {...props}>
       <Icon icon={IconPath.FILTER} />:
@@ -29,13 +46,19 @@ export const FilterToolbar: React.FC<FilterToolbarProps> = ({
           )
         }
       />
-      {!!activeCategories?.length && (
-        <ActionButton
-          className="ml-4"
-          icon={IconPath.TRASH}
-          onClick={() => handleChange([])}
-        />
-      )}
+      <AnimatePresence>
+        {!!activeCategories?.length && (
+          <ActionButton
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={variants}
+            className="ml-4"
+            icon={IconPath.TRASH}
+            onClick={() => handleChange([])}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
