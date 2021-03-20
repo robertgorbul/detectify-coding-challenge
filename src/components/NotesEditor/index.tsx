@@ -104,7 +104,7 @@ export const NotesEditor: React.FC = () => {
   }, [isItemsToDelete]);
 
   return (
-    <section className="w-full max-w-text my-40">
+    <section className="w-full max-w-text my-20 xxl:my-40">
       <AnimateSharedLayout type="crossfade">
         <div className="flex items-center">
           <ActionButton
