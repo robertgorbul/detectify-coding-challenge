@@ -4,3 +4,4 @@
 .next
 out
 node_modules
+coverage

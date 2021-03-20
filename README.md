@@ -1,23 +1,27 @@
 # Detectify Coding Challenge
+
 [![Build Status](https://builds.probablyweb.dev/api/badges/robertgorbul/detectify-coding-challenge/status.svg)](https://builds.probablyweb.dev/robertgorbul/detectify-coding-challenge)
 
 ## Notes App
+
 Build a web-based note-taking app
 
 ### Requirements
+
 - The user should be able to create a new note
 - The user should be able to edit and delete a note
 - The user should be able to navigate through multiple notes
 - Search function to find notes
 
 ### Bonus features
+
 - Create notes in different categories
 - Move notes trough categories
 - Markdown editor
 - Persist notes in some way, either with a backend database, local storage or whatever
 
-
 ### Result
+
 - Requirements are implemented
 - Categories support
 - localStorage support
@@ -25,6 +29,7 @@ Build a web-based note-taking app
 - Demo https://notesapp.probablyweb.dev/
 
 ### Configuration
+
 Create `.env` file at project root:
 
 ```dotenv

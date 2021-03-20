@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
 
-
 import { ThemeProvider } from '~theme/ThemeProvider';
 import { FontFaceLoader } from '~components/FontFaceLoader';
 

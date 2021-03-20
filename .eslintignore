@@ -1,8 +1,9 @@
 .vscode
 .idea
 .git
-node_modules/*
-out/*
-.next/*
+node_modules
+out
+.next
 .eslintrc.js
 *.config.js
+coverage
