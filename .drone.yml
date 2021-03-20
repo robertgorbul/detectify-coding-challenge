@@ -24,13 +24,6 @@ steps:
         - main
         - feature/*
 
-  - name: tests
-    image: node:14-buster-slim
-    pull: always
-    commands:
-      - yarn install
-      - yarn test:unit:coverage
-
   - name: build
     image: node:14-buster-slim
     pull: always
@@ -39,6 +32,12 @@ steps:
     commands:
       - yarn install
       - yarn export
+
+  - name: tests
+    image: node:14-buster-slim
+    commands:
+      - yarn lint
+      - yarn test:unit:coverage
 
   - name: rebuild-cache
     image: meltwater/drone-cache
