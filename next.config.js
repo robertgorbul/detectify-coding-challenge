@@ -5,4 +5,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withPlugins([[withBundleAnalyzer]], {
   reactStrictMode: true,
+  future: {
+    webpack5: true,
+    strictPostcssConfiguration: true,
+  },
 });
