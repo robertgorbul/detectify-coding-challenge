@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import classNames from 'classnames/bind';
 
-import { ActionButton } from '~components/ActionButton';
+import { Button } from '~components/Button';
 import { IconPath } from '~/src/assets/icons';
 
 import styles from './ListItem.module.css';
@@ -32,9 +32,10 @@ export const ListItem: React.FC<ListItemProps> = ({
       <motion.div className="flex justify-between items-center">
         {children}
         {handleDelete && (
-          <ActionButton
-            className="ml-auto mr-0 bg-opacity-60 hover:bg-opacity-80"
+          <Button
+            className="m-2 ml-auto mr-0 bg-opacity-60 hover:bg-opacity-80"
             color="bg-red"
+            action
             icon={IconPath.TRASH}
             onClick={handleDelete}
             aria-label="Delete note"

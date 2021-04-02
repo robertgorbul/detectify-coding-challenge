@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
-import { ActionButton } from '~components/ActionButton';
+import { Button } from '~components/Button';
 import { CategoriesToolbar } from '~components/CategoriesToolbar';
 import { IconPath } from '~/src/assets/icons';
 
@@ -70,8 +70,9 @@ export const Note: React.FC<NoteProps> = ({
       className="fixed inset-0 flex justify-center items-start md:items-center"
     >
       <motion.div className={classes} {...props}>
-        <ActionButton
-          className="ml-auto"
+        <Button
+          className="m-2 ml-auto"
+          action
           icon={IconPath.X}
           tabIndex={TabIndexes.HIGH}
           onClick={handleClose}
@@ -96,9 +97,10 @@ export const Note: React.FC<NoteProps> = ({
             activeCategories={item?.categories}
             handleChange={handleCategories}
           />
-          <ActionButton
-            className="ml-auto bg-opacity-60 hover:bg-opacity-80"
+          <Button
+            className="ml-auto m-2 bg-opacity-60 hover:bg-opacity-80"
             color="bg-red"
+            action
             icon={IconPath.TRASH}
             tabIndex={TabIndexes.HIGH}
             onClick={(e) => handleDelete(e, item.id)}

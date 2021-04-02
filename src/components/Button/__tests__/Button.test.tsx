@@ -37,4 +37,15 @@ describe('Button', () => {
 
     expect(getByRole('img')).toBeTruthy();
   });
+
+  it('Should be action button', () => {
+    const onClick = jest.fn();
+    const { getByText } = render(
+      <Button onClick={onClick} action>
+        Button
+      </Button>
+    );
+
+    expect(getByText('Button').classList.contains('rounded-full')).toBeTruthy();
+  });
 });

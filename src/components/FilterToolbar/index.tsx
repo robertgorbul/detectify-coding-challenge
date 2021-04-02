@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
 
-import { ActionButton } from '~components/ActionButton';
+import { Button } from '~components/Button';
 import { Icon } from '~components/Icon';
 import { CategoriesToolbar } from '~components/CategoriesToolbar';
 
@@ -48,12 +48,13 @@ export const FilterToolbar: React.FC<FilterToolbarProps> = ({
       />
       <AnimatePresence>
         {!!activeCategories?.length && (
-          <ActionButton
+          <Button
+            action
             initial="hidden"
             animate="visible"
             exit="hidden"
             variants={variants}
-            className="ml-4"
+            className="m-2 ml-4"
             icon={IconPath.TRASH}
             onClick={() => handleChange([])}
           />

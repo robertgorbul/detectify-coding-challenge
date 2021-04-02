@@ -8,7 +8,7 @@ import {
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ActionButton } from '~components/ActionButton';
+import { Button } from '~components/Button';
 import { Note } from '~components/Note';
 import { NotesList } from '~components/NotesList';
 import { SearchBar } from '~components/SearchBar';
@@ -107,16 +107,18 @@ export const NotesEditor: React.FC = () => {
     <section className="w-full max-w-text my-20 xxl:my-40">
       <AnimateSharedLayout type="crossfade">
         <div className="flex items-center">
-          <ActionButton
-            className="ml-4 bg-opacity-60 hover:bg-opacity-80 shadow-md hover:shadow-lg"
+          <Button
+            className="m-2 ml-4 bg-opacity-60 hover:bg-opacity-80 shadow-md hover:shadow-lg"
+            action
             color="bg-orange text-light"
             icon={IconPath.SEARCH}
             tabIndex={TabIndexes.HIGH}
             onClick={() => setIsSearchOpen(true)}
             aria-label="Create new note"
           />
-          <ActionButton
-            className="ml-auto mr-4 bg-opacity-60 hover:bg-opacity-80 shadow-md hover:shadow-lg"
+          <Button
+            className="m-2 ml-auto mr-4 bg-opacity-60 hover:bg-opacity-80 shadow-md hover:shadow-lg"
+            action
             color="bg-blue"
             icon={IconPath.PLUS}
             tabIndex={TabIndexes.HIGH}

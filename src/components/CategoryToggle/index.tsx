@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import { ActionButton } from '~components/ActionButton';
+import { Button } from '~components/Button';
 
 import { TabIndexes } from '~types';
 import { CategoryToggleProps } from './CategoryToggle.types';
@@ -15,6 +15,7 @@ export const CategoryToggle: React.FC<CategoryToggleProps> = ({
   ...props
 }) => {
   const categoryClasses = classNames(
+    'm-2',
     {
       'bg-opacity-60': !isActive,
       'bg-opacity-100': isActive,
@@ -23,8 +24,9 @@ export const CategoryToggle: React.FC<CategoryToggleProps> = ({
   );
 
   return (
-    <ActionButton
+    <Button
       className={categoryClasses}
+      action
       color={isActive ? color : 'bg-base01'}
       icon={icon}
       tabIndex={TabIndexes.HIGH}

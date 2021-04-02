@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
-import { ActionButton } from '~components/ActionButton';
+import { Button } from '~components/Button';
 import { Icon } from '~components/Icon';
 import { List } from '~components/List';
 import { ListItem } from '~components/ListItem';
@@ -102,7 +102,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({
               onChange={onChange}
             />
           </label>
-          <ActionButton
+          <Button
+            className="m-2"
+            action
             icon={IconPath.X}
             tabIndex={TabIndexes.HIGH}
             onClick={handleClose}
