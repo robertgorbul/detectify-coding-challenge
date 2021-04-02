@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <motion.button className={classes} onClick={onClick} {...props}>
       {icon && <Icon icon={icon} />}
-      {children}
+      {!action && children}
     </motion.button>
   );
 };

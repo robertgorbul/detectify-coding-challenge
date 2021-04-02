@@ -40,12 +40,15 @@ describe('Button', () => {
 
   it('Should be action button', () => {
     const onClick = jest.fn();
-    const { getByText } = render(
-      <Button onClick={onClick} action>
+    const { getByRole, queryByText } = render(
+      <Button onClick={onClick} icon={IconPath.SEARCH} action>
         Button
       </Button>
     );
 
-    expect(getByText('Button').classList.contains('rounded-full')).toBeTruthy();
+    const btn = getByRole('button');
+
+    expect(btn.classList.contains('rounded-full')).toBeTruthy();
+    expect(queryByText('Button')).toBeFalsy();
   });
 });
