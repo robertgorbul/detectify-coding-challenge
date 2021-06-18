@@ -26,7 +26,6 @@ Build a web-based note-taking app
 - Categories support
 - localStorage support
 - Dark theme support via prefers-color-scheme
-- Demo https://notesapp.probablyweb.dev/
 
 ### Configuration
 
